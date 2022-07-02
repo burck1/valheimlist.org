@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>Comfy Valheim - Valheimlist.org</title>
     <meta name="description" content="Era 6 is live! We have custom events, economy, guilds, &amp; more!">
 
@@ -24,6 +26,7 @@
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="/assets/css/listing.css">
+    <link rel="stylesheet" href="/assets/css/icons.css">
 </head>
 <html lang="en">
 <body>
@@ -32,48 +35,53 @@
 </div>
 <div class="width-container">
     <nav>
-        <img onclick="window.location.href = 'https://valheimlist.org'" class="logo-mast" src="../assets/img/logo.svg" alt="Valheimlist.org">
-        <div onclick="window.location.href = 'https://valheimlist.org';" id="see-all-servers"><span class="ico-server"></span>Browse servers</div>
-        <div id="disbtn" class="discord-button" onClick="discord_button_action()">
-            <span class="ico-discord"></span>
-            Login
-        </div>
-
+        <a class="see-all-servers" href="https://valheimlist.org"><span class="ico ico-server"></span> Browse servers</a>
+        <a class="logo-link" href="https://valheimlist.org"><img class="logo-mast" src="/assets/img/logo.svg" alt="Valheimlist.org"></a>
+        <a class="discord-button" id="disbtn" href="#" onClick="discord_button_action()"><span class="ico ico-discord"></span> Login</a>
+        <div class="break-for-mobile"></div>
     </nav>
 
     <header>
         <div class="header-top">
-            <img alt="The server logo image" src="https:&#x2F;&#x2F;cdn.statically.io&#x2F;img&#x2F;api.valheimlist.org&#x2F;w=240,f=auto&#x2F;img&#x2F;6760b3a1-3dd5-43a6-8a14-fb07f3621e34&#x2F;Screenshot from 2021-07-11 20-23-54.png">
-            <div class="h1"><h1>Comfy Valheim</h1><span title="North America"
-            
-            
->na</span><span
-                    class="verified" title="Servers that are atleast 3 months old and that go above and beyond to benefit the entire Valheim community receive the verified status.">Verified</span>
+            <div class="server-logo">
+                <img alt="The server logo image" src="https:&#x2F;&#x2F;cdn.statically.io&#x2F;img&#x2F;api.valheimlist.org&#x2F;w=240,f=auto&#x2F;img&#x2F;6760b3a1-3dd5-43a6-8a14-fb07f3621e34&#x2F;Screenshot from 2021-07-11 20-23-54.png">
             </div>
-            <p id="server-summary">Era 6 is live! We have custom events, economy, guilds, &amp; more!</p>
-            <div id="ipbox"><span id="ipcontent">comfy.valngos.com</span><b id="iptext">Click to copy IP</b></div>
-            <div onclick="window.open('https:&#x2F;&#x2F;discord.gg&#x2F;ameHJz5PFk')"><span class="ico-discord-nobg"></span>Join</div>
+            <div class="server-info">
+                <div class="server-name">
+                    <h1>Comfy Valheim</h1>
+                    <div class="server-icons">
+                        <span class="server-location" title="North America">na</span>
+                        <span class="server-verified" title="Servers that are atleast 3 months old and that go above and beyond to benefit the entire Valheim community receive the verified status.">Verified</span>
+                    </div>
+                </div>
+                <p class="server-summary">Era 6 is live! We have custom events, economy, guilds, &amp; more!</p>
+            </div>
+            <div class="server-connect">
+                <div class="server-ip"><span class="server-ip-content">comfy.valngos.com</span><b class="server-ip-text">Click to copy IP</b></div>
+                <div class="server-discord" onclick="window.open('https:&#x2F;&#x2F;discord.gg&#x2F;ameHJz5PFk')"><span class="ico-discord-nobg"></span>Join</div>
+            </div>
         </div>
         <div class="header-bot">
-            <div class="col">
-                <span>Online</span>
-                <span id="pcount_split">50</span>
+            <div class="metric">
+                <p class="metric-name">Online</p>
+                <p class="metric-value" id="pcount_split">50</p>
             </div>
-            <div class="col">
-                <span>Whitelist</span>
-                <span>Yes</span>
+            <div class="metric">
+                <p class="metric-name">Whitelist</p>
+                <p class="metric-value">Yes</p>
             </div>
-            <div class="col">
-                <span>Feedback</span>
-                <span id="fb_split">99%</span>
+            <div class="metric">
+                <p class="metric-name">Feedback</p>
+                <p class="metric-value" id="fb_split">99%</p>
             </div>
             <div class="graph">
-                <span id="graph-name">Player Count by hour</span>
-                <div id="graph-max-count">
-                    <div class="num-count-display">53</div>
-                    <div class="hack-flair-encompassing"></div>
-                    <div class="num-count-display">0</div>
-                </div>
+                <p class="graph-name">Player Count by hour</p>
+                <div class="graph-data">
+                    <div class="graph-max-count">
+                        <div class="num-count-display">53</div>
+                        <div class="hack-flair-encompassing"></div>
+                        <div class="num-count-display">0</div>
+                    </div>
                 <div id="graph-holder" class="graph-holder">
                     
                     <div data-time="2022-06-29 15:08:34.635095531+0000"
@@ -617,13 +625,18 @@
                             </div>
                             
                         </div>
-                        <div id="graph-tt"><span>?</span> ? Players</div>
-                        <div class="graph-controls">
-                            <div id="hourly-control" class="active">Hourly</div>
-                            <div id="daily-control">Daily</div>
-                        </div>
+                </div>
+                <div class="graph-options">
+                    <div id="graph-tt" class="graph-tt">
+                        <p><span>?</span> ? Players</p>
+                    </div>
+                    <div class="graph-controls">
+                        <div class="hourly-control" class="active">Hourly</div>
+                        <div class="daily-control">Daily</div>
                     </div>
                 </div>
+            </div>
+        </div>
     </header>
 
     <div class="content-container">
@@ -2964,32 +2977,6 @@ The staff is excellent, working hard to provide new content to keep things fresh
     </div>
 </footer>
 
+<script src="/assets/scripts/scripts.js"></script>
 </body>
 </html>
-<script src="../assets/scripts/scripts.js"></script>
-<script>
-    e("ipbox").onclick = function () {
-        e("ipbox").style.background = "#485f44";
-        e("ipbox").style.color = "#fff";
-        e("ipbox").style.pointerEvents = "none";
-        e("ipbox").style.transform = "scale(.95)";
-        copyToClipboard(e("ipcontent").innerText)
-        e("iptext").innerText = "Copied!";
-        setTimeout(function () {
-            e("ipbox").style.transform = "scale(1)";
-            e("ipbox").style.transition = "500ms";
-            e("ipbox").style.background = "#3e3e3e";
-            e("ipbox").style.color = "#7f7f7f";
-        }, 500);
-        setTimeout(function () {
-            e("ipbox").style.pointerEvents = "default";
-            e("ipbox").style.cssText = "";
-            e("iptext").innerText = "Click to copy IP";
-        }, 1000);
-    };
-
-    setupReviews(0)
-    showCommentsInput()
-    registerGraphEvents()
-</script>
-<link rel="stylesheet" href="../assets/css/icons.css">

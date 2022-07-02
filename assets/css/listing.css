@@ -27,28 +27,36 @@ html {
 }
 
 .width-container {
-    width: 1000px;
-    margin:auto;
+    max-width: 1032px;
+    margin: 0 auto;
+    padding: 0 1rem;
 }
 
-nav {
-    position: relative;
-    margin-bottom: 40px;
+.width-container nav {
+    margin-top: 30px;
+    margin-bottom: 30px;
     text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    column-gap: 10px;
+    row-gap: 10px;
 }
 
-nav .logo-mast {
+.width-container nav a {
+    display: inline-block;
+    text-decoration: none;
+}
+
+.width-container nav a.logo-link {}
+
+.width-container nav a.logo-link img.logo-mast {
     height: 70px;
     width: 225px;
-    display: block;
-    margin: 30px auto 0px auto;
-    cursor:pointer
 }
 
-#see-all-servers {
-    position: absolute;
-    left: 0;
-    top: 16px;
+.width-container nav a.see-all-servers {
     letter-spacing: 1px;
     font-weight: 700;
     font-size: 13px;
@@ -56,14 +64,14 @@ nav .logo-mast {
     padding: 9px 22px 9px 22px;
     border-radius: 5px;
     color: #dbdbdb;
-    cursor: pointer;
+    white-space: nowrap;
 }
 
-#see-all-servers:hover {
+.width-container nav a.see-all-servers:hover {
     background-color: #323232;
 }
 
-nav span {
+.width-container nav span.ico {
     display: inline-block;
     height: 20px;
     width: 20px;
@@ -72,7 +80,7 @@ nav span {
     background-repeat: no-repeat;
 }
 
-.discord-button {
+.width-container nav a.discord-button {
     background: #7289da linear-gradient(180deg, #7289da, #5369b6);
     border-radius: 200px;
     padding: 9px 0;
@@ -80,26 +88,34 @@ nav span {
     height: 41px;
     color: #fff;
     box-shadow: 0 5px 10px rgba(0,0,0,.5);
-    cursor: pointer;
     min-width: 145px;
     font-weight: 600;
-    position: absolute;
-    right: 0;
-    top:16px;
+    position: relative;
     white-space: nowrap;
     overflow: hidden;
 }
-.discord-button .flair {
+
+.width-container nav a.discord-button:hover {
+    background: #5c73c2 linear-gradient(180deg, #4a60aa, #667dcd);
+}
+
+.width-container nav a.discord-button span.ico-discord {
+    margin-left: 25px;
+    margin-top: 2px;
+    vertical-align: -5px;
+}
+
+.width-container nav a.discord-button .flair {
     background-color: rgba(0,0,0,.25);
     height: 100%;
     width: 47px;
+    position: absolute;
     left: 0;
     top: 0;
-    margin:0;
-    position: absolute;
+    margin: 0;
 }
 
-.discord-button img {
+.width-container nav a.discord-button img {
     width: 29px;
     height: 29px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -109,7 +125,7 @@ nav span {
     left: 10px;
 }
 
-.online-tick {
+.width-container nav a.discord-button .online-tick {
     border-radius: 50px;
     background: #4cff00;
     box-sizing: content-box;
@@ -119,10 +135,9 @@ nav span {
     top: 24px;
     left: -22px;
     box-shadow: 0 0 3px rgb(114, 255, 0);
-
 }
 
-.discord-button div {
+.width-container nav a.discord-button div {
     margin: 4px 10px 0 53px;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -130,38 +145,149 @@ nav span {
     text-transform: initial;
 }
 
-.discord-button:hover {
-    background: #5c73c2 linear-gradient(180deg, #4a60aa, #667dcd)!important;
+.width-container nav .break-for-mobile {
+    display: none;
 }
 
-.discord-button span {
-    margin-left: 25px;
-    margin-top:2px;
-    vertical-align: -5px!important;
+/*
+ * setup layout so the logo is at the top of the page and
+ * the buttons are side-by-side below the logo
+ */
+@media screen and (max-width: 768px) and (min-width: 576px) {
+    .width-container nav a.logo-link {
+        order: 1;
+        margin: 0 auto;
+    }
+    .width-container nav .break-for-mobile {
+        display: block;
+        order: 2;
+        flex-basis: 100%;
+        height: 0;
+    }
+    .width-container nav a.see-all-servers {
+        order: 3;
+    }
+    .width-container nav a.discord-button {
+        order: 4;
+    }
 }
+
+/*
+ * setup layout so the logo is at the top of the page and
+ * the buttons are on separate rows below the logo
+ */
+@media screen and (max-width: 575px) {
+    .width-container nav {
+        flex-direction: column;
+        row-gap: 30px;
+    }
+    .width-container nav a.logo-link {
+        order: 1;
+    }
+    .width-container nav a.see-all-servers {
+        order: 2;
+    }
+    .width-container nav a.discord-button {
+        order: 3;
+    }
+}
+
 
 header {
     margin-bottom: 50px;
 }
 
-.header-top {
-    height: 181px;
-    width: 100%;
+header .header-top {
+    margin-bottom: 3px;
+    padding: 20px 30px;
     background: linear-gradient(#2f2f2f, #242424);
-    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    row-gap: 20px;
+    column-gap: 30px;
 }
 
-.header-top div {
+@media screen and (max-width: 575px) {
+    header .header-top {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
+header .header-top .server-logo {}
+
+@media screen and (max-width: 575px) {
+    header .header-top .server-logo {
+        align-self: center;
+    }
+}
+
+header .header-top .server-logo img {
+    height: 140px;
+    width: 140px;
+    padding: 2px;
+    background-color: #131313;
+    border: 2px solid #0dd2d7;
+    border-radius: 10px;
+}
+
+header .header-top .server-info {
+    flex: 1;
+    min-width: 180px;
+}
+
+header .header-top .server-info .server-name {
+    margin-bottom: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    row-gap: 5px;
+    column-gap: 12px;
+}
+
+header .header-top .server-info .server-name h1 {}
+
+header .header-top .server-info .server-name .server-icons {
+    display: flex;
+    column-gap: 10px;
+}
+
+header .header-top .server-info .server-name .server-icons span {
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 10px;
+    padding: 2px 4px 1px 4px;
+    border-radius: 5px;
+}
+
+header .header-top .server-info .server-name .server-icons span.server-location {
+    color: rgba(255,255,255,.6);
+    border: 1px solid rgba(255, 255, 255, 0.49);
+}
+header .header-top .server-info .server-name .server-icons span.server-verified {
+    color: rgb(77, 255, 0);
+    border: 1px solid rgb(77, 255, 0);
+}
+
+header .header-top .server-info p.server-summary {
+    color: #aaaaaa;
+    line-height: 22px;
+}
+
+header .header-top .server-connect {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 10px;
+    column-gap: 10px;
+}
+
+header .header-top .server-connect .server-ip {
     cursor: pointer;
+    width: 180px;
     height: 60px;
     user-select: none;
-}
-
-.header-top div:nth-child(4) {
-    width: 180px;
-    position: absolute;
-    right: 100px;
-    top: 57px;
     border-radius: 10px;
     background: #3e3e3e;
     border: 1px solid transparent !important;
@@ -172,14 +298,24 @@ header {
     text-align: center;
     color: #a1a1a1;
     letter-spacing: 1px;
+    pointer-events: auto;
+    transform: scale(1);
+    transition: transform 500ms;
 }
 
-.header-top div:nth-child(4):hover {
+header .header-top .server-connect .server-ip:hover {
     background: #4b4b4b;
     color: #fff;
 }
 
-.header-top div:nth-child(4) span {
+header .header-top .server-connect .server-ip.clicked {
+    background: #485f44;
+    color: #fff;
+    pointer-events: none;
+    transform: scale(.95);
+}
+
+header .header-top .server-connect .server-ip span {
     text-align: center;
     width: 165px;
     padding: 8px 10px;
@@ -196,11 +332,11 @@ header {
     text-overflow: ellipsis;
 }
 
-.header-top div:last-child {
+header .header-top .server-connect .server-discord {
+    cursor: pointer;
     width: 60px;
-    position: absolute;
-    right: 30px;
-    top: 57px;
+    height: 60px;
+    user-select: none;
     border-radius: 10px;
     background: #5c73c2 linear-gradient(180deg, #7287ce, #4a60aa) !important;
     box-shadow: 0 5px 10px rgba(0,0,0,.1);
@@ -213,76 +349,223 @@ header {
     transition: 500ms;
 }
 
-.header-top div:last-child:hover {
+header .header-top .server-connect .server-discord:hover {
     background: #5c73c2 linear-gradient(180deg, #8393cb, #5467a7) !important;
 }
 
-.header-top div:last-child span {
+header .header-top .server-connect .server-discord span {
     width: 30px;
     height: 30px;
     display: block;
     margin: 5px auto 2px auto;
 }
 
-.header-bot {
-    margin-top: 3px;
-    height: 90px;
-    width: 100%;
+header .header-bot {
     background-color: #2a2a2a;
-    position: relative;
-
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 30px;
 }
 
-.header-top img {
-    height: 140px;
-    width: 140px;
-    padding: 2px;
-    background-color: #131313;
-    border: 2px solid #0dd2d7;
-    border-radius: 10px;
-    position: absolute;
-    top: 20px;
-    left: 30px;
+/* reduce gap for narrow screens */
+@media screen and (max-width: 320px) {
+    header .header-bot {
+        column-gap: 10px;
+    }
 }
 
-.h1 {
-    position: absolute;
-    top: 45px;
-    left: 200px;
-    display: inline-block;
+header .header-bot .metric {
+    text-align: center;
+    padding: 20px 0;
 }
 
-.h1 h1 {
-    display: inline-block;
+header .header-bot .metric:nth-child(1) {
+    padding-left: 30px;
 }
 
-.h1 span {
+/* reduce padding for narrow screens */
+@media screen and (max-width: 320px) {
+    header .header-bot .metric:nth-child(1) {
+        padding-left: 10px;
+    }
+}
+
+header .header-bot .metric p.metric-name {
     text-transform: uppercase;
-    color: rgba(255,255,255,.6);
     font-weight: 600;
     font-size: 10px;
-    padding: 2px 4px 1px 4px;
-    margin-left: 12px;
-    position: relative;
-    top: -7px;
-    border: 1px solid rgba(255, 255, 255, 0.49);
+    padding-bottom: 12px;
+    letter-spacing: 2px;
+    color: #979797
+}
+
+header .header-bot .metric p.metric-value {
+    font-size: 18px;
+}
+
+header .header-bot .graph {
+    flex: 1;
+    background-color: #232323;
+    padding: 15px 30px 0px 30px;
+}
+
+/* reduce padding for narrow screens */
+@media screen and (max-width: 320px) {
+    header .header-bot .graph {
+        padding: 15px 15px 0px 15px;
+    }
+}
+
+header .header-bot .graph p.graph-name {
+    text-align: right;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 10px;
+    color: #808080;
+    text-shadow: 0 0 3px #232323;
+}
+
+header .header-bot .graph .graph-data {
+    display: flex;
+    align-items: center;
+}
+
+header .header-bot .graph .graph-data .graph-max-count {}
+
+header .header-bot .graph .graph-data .graph-max-count .num-count-display {
+    color: #808080;
+    font-weight: bold;
+    font-size: 10px;
+    width: 20px;
+    text-align: center;
+    padding: 3px 0;
+}
+
+header .header-bot .graph .graph-data .graph-max-count .hack-flair-encompassing {
+    height: 32px;
+    width: 6px;
+    border: 1px solid #4b4b4b;
+    border-right: 1px solid rgba(0,0,0,0);
+    margin-left: 7px;
+}
+
+header .header-bot .graph .graph-data .graph-holder {
+    flex: 1;
+    height: 60px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+}
+
+header .header-bot .graph .graph-data .graph-holder > div {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+}
+
+header .header-bot .graph .graph-data .graph-holder > div:hover {
+    background-color: #474747;
+}
+
+header .header-bot .graph .graph-data .graph-holder > div > div {
+    border-radius: 0;
+    width: 2px;
+    margin: 15px auto;
+    background: linear-gradient(#00fed6, #00f6fd, #00fed6);
+    pointer-events: none;
+}
+
+header .header-bot .graph .graph-options {
+    display: flex;
+    height: 12px;
+}
+
+header .header-bot .graph .graph-options .graph-tt {
+    opacity: 0;
+    flex: 1;
+    transition: 100ms;
+    transition-timing-function: ease-in-out;
+}
+
+header .header-bot .graph .graph-options .graph-tt p {
+    height: 25px;
+    display: inline-block;
     border-radius: 5px;
-
+    background: linear-gradient(#171717, #000000);
+    border: 1px solid #3b3b3b;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 10px;
+    letter-spacing: 1px;
+    padding: 5px;
+    color: #fff;
 }
 
-.verified {
-    color: rgb(77, 255, 0)!important;
-    border: 1px solid rgb(77, 255, 0) !important;
+/* The "visible" class is added via script.js on hover of the graph */
+header .header-bot .graph .graph-options .graph-tt.visible {
+    opacity: 1;
 }
 
-.header-top p {
-    position: absolute;
-    top: 95px;
-    left: 200px;
-    color: #aaaaaa;
-    width: 350px;
-    line-height: 22px;
+header .header-bot .graph .graph-options .graph-tt span {
+    margin-right: 5px;
+    background-color: #232323;
+    border: 1px solid #4b4b4b;
+    padding: 0px 5px;
+    border-radius: 5px;
 }
+
+header .header-bot .graph .graph-options .graph-controls {
+    height: 25px;
+    width: 125px;
+    color: #acacac;
+    border-radius: 5px;
+    background: linear-gradient(#282828, #151515);
+    border:1px solid #3b3b3b;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 10px;
+    letter-spacing: 1px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+header .header-bot .graph .graph-options .graph-controls .daily-control {
+    cursor: not-allowed!important;
+}
+
+header .header-bot .graph .graph-options .graph-controls div {
+    display: inline-block;
+    padding: 5px 10px;
+    border-right:1px solid #3b3b3b;
+}
+
+header .header-bot .graph .graph-options .graph-controls div:last-child {
+    border: none;
+}
+
+header .header-bot .graph .graph-options .graph-controls div:hover {
+    color: #e2e2e2;
+    background: linear-gradient(#171717, #000000);
+}
+
+header .header-bot .graph .graph-options .graph-controls .active {
+    cursor: default;
+    color: #e2e2e2;
+    background: linear-gradient(#171717, #000000);
+}
+
+header .header-bot .empty {
+    background: #6d6d6d!important;
+}
+
+header .header-bot .dead {
+    height: 3%!important;
+    background: rgba(255, 0, 0, 0.74) !important;
+}
+
+/* ============================================================ */
 
 .tags {
     width: 100%;
@@ -312,195 +595,6 @@ header {
     cursor: pointer;
 }
 
-.col {
-    display: inline-block;
-    width: 100px;
-    margin-right: 5px;
-    text-align: center;
-    margin-top: 22px;
-}
-
-.col:first-child {
-    margin-left: 15px;
-}
-
-.col span:nth-child(1) {
-    text-transform: uppercase;
-    font-weight: 600;
-    font-size: 10px;
-    padding-bottom: 12px;
-    display: block;
-    letter-spacing: 2px;
-    color: #979797
-}
-
-.col span:nth-child(2) {
-    display: block;
-    font-size: 18px;
-}
-
-.graph {
-    background-color: #232323;
-    height: 100%;
-    width: 640px;
-    position: absolute;
-    right: 0;
-    top:0;
-    padding: 15px 30px 15px 55px;
-}
-
-.graph-holder {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    justify-content: space-between;
-}
-
-.graph-holder div {
-    flex: 1;
-    height:100%;
-    position: relative;
-}
-
-.graph-holder div:hover {
-    background-color: #474747;
-}
-
-.graph-holder div div {
-    border-radius: 0;
-    height: 3%;
-    width: 2px;
-    margin: 15px auto;
-    background: linear-gradient(#00fed6, #00f6fd, #00fed6);
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    pointer-events: none;
-}
-
-.empty {
-    background: #6d6d6d!important;
-}
-
-.dead {
-    height: 3%!important;
-    background: rgba(255, 0, 0, 0.74) !important;
-}
-
-#graph-name {
-    position: absolute;
-    top: 0;
-    text-align: center;
-    right: 30px;
-    text-transform: uppercase;
-    font-weight: 500;
-    font-size: 10px;
-    color: #808080;
-    margin-top: 10px;
-    z-index: 10;
-    text-shadow: 0 0 3px #232323;
-}
-
-.graph-holder:hover ~ #graph-tt {
-    opacity: 1;
-}
-
-#graph-tt {
-    transition: 100ms;
-    transition-timing-function: ease-in-out;
-    opacity: 0;
-    position: absolute;
-    bottom:-12px;
-    height: 25px;
-    border-radius: 5px;
-    left: 31px;
-    background: linear-gradient(#171717, #000000);
-    border:1px solid #3b3b3b;
-    text-transform: uppercase;
-    font-weight: 500;
-    font-size: 10px;
-    letter-spacing: 1px;
-    padding: 5px 5px;
-    color: #fff;
-}
-
-#graph-tt span {
-    margin-right: 5px;
-    background-color: #232323;
-    border: 1px solid #4b4b4b;
-    padding: 0px 5px;
-    border-radius: 5px;
-}
-
-.graph-controls {
-    position: absolute;
-    bottom:-12px;
-    height: 25px;
-    color: #acacac;
-    border-radius: 5px;
-    right: 30px;
-    background: linear-gradient(#282828, #151515);
-    border:1px solid #3b3b3b;
-    text-transform: uppercase;
-    font-weight: 500;
-    font-size: 10px;
-    letter-spacing: 1px;
-    overflow: hidden;
-    cursor: pointer;
-}
-
-#daily-control {
-    cursor: not-allowed!important;
-}
-
-.graph-controls div {
- display: inline-block;
-    padding: 5px 10px;
-    border-right:1px solid #3b3b3b;
-}
-
-.graph-controls div:last-child {
-    border: none;
-}
-
-.graph-controls div:hover {
-    color: #e2e2e2;
-    background: linear-gradient(#171717, #000000);
-}
-
-.graph-controls .active {
-    cursor: default;
-    color: #e2e2e2;
-    background: linear-gradient(#171717, #000000);
-}
-
-#graph-max-count {
-    position: absolute;
-    top: 11px;
-    left: 25px;
-}
-
-.num-count-display {
-    color: #808080;
-    font-weight: bold;
-    font-size: 10px;
-    width: 20px;
-    text-align: center;
-    padding: 3px 0;
-}
-
-.hack-flair-encompassing {
-    height: 32px;
-    width: 6px;
-    border: 1px solid #4b4b4b;
-    border-right: 1px solid rgba(0,0,0,0);
-    margin-left: 7px;
-}
-
 section {
     display: inline-block;
     color: #a7a7a7;
@@ -518,6 +612,7 @@ section {
     line-height: 25px;
     padding: 10px 0;
     white-space: pre-wrap;
+    word-wrap: break-word;
 }
 
 .desc p:first-child {
@@ -531,6 +626,7 @@ section {
 
 .content-container {
     display: flex;
+    flex-wrap: wrap;
 }
 
 .reviews {
@@ -545,6 +641,16 @@ section {
     left: calc(50% - 50px);
     position: relative;
     margin-bottom: 100px;
+}
+
+@media screen and (max-width: 1000px) {
+    .desc {
+        width: 100%;
+        border-right: 0;
+    }
+    .reviews {
+        width: 100%;
+    }
 }
 
 .leave-review {
@@ -784,49 +890,49 @@ section {
 
 footer {
     background-color: #101010;
-    height: 500px;
-
 }
 
-.footer-container {
-    max-width: 500px;
+footer .footer-container {
+    max-width: 550px;
     margin: auto;
-    padding: 70px 0;
+    padding: 30px;
+    display: flex;
+    flex-wrap: wrap-reverse;
+    row-gap: 30px;
+    column-gap: 30px;
+    justify-content: space-between;
 }
 
-footer img {
-    width: 225px;
-    height: auto;
+footer .footer-container .leftsidefooter {}
+
+footer .footer-container .leftsidefooter img {
+    max-width: 225px;
+    margin-bottom: 20px;
 }
 
-footer .leftsidefooter {
-    float: left;
-}
-
-footer .text {
+footer .footer-container .leftsidefooter .text {
     display: block;
     color: #8e8e8e;
-    padding: 30px 0;
-    width: 300px;
+    max-width: 300px;
     line-height: 25px;
 }
 
-footer nav {
-    float: right;
+footer .footer-container nav {
+    text-transform: uppercase;
 }
 
-footer h6 {
+footer .footer-container h6 {
     text-transform: uppercase;
     font-size: 14px;
     margin-bottom: 20px;
     color: #686868;
 }
 
-footer a {
+footer .footer-container a {
     color: #c1c1c1;
 }
 
-footer nav a {
+footer .footer-container nav a {
     display: block;
     color: #c1c1c1;
     font-weight: 600;
@@ -835,41 +941,33 @@ footer nav a {
     padding: 4px 0;
 }
 
-footer a:hover {
+footer .footer-container a:hover {
     color: #fff;
 }
 
-@media (max-width: 1050px) {
-    .width-container {
-        zoom: .8;
-        -moz-transform: scale(.8);
-        -moz-transform-origin: top center;
-    }
-}
-
 .image-modal {
-display: none;
-position: fixed;
-top:0;
-left:0;
-bottom:0;
-right:0;
-width: 100vw;
-height:100vh;
-background-color: rgba(0,0,0,.5);
-z-index:999;
+    display: none;
+    position: fixed;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    width: 100vw;
+    height:100vh;
+    background-color: rgba(0,0,0,.5);
+    z-index:999;
 }
 
 .image-modal img {
-max-width: calc(100vw - 100px);
-display: block;
-position: fixed;
-background-color: #000;
-top: 50%;
-left:50%;
+    max-width: calc(100vw - 100px);
+    display: block;
+    position: fixed;
+    background-color: #000;
+    top: 50%;
+    left:50%;
     transform: translate(-50%, -50%);
     padding: 5px;
     border: 4px solid #00f8f2;
     border-radius: 30px;
-max-height: calc(100vh - 100px);
+    max-height: calc(100vh - 100px);
 }

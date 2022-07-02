@@ -111,12 +111,12 @@ function registerGraphEvents() {
 
         if (!isNaN(elem.dataset.count)) {
             if (elem.dataset.count == -1) {
-                e("graph-tt").innerHTML = `<span>${date}</span> Server down`;
+                e("graph-tt").innerHTML = `<p><span>${date}</span> Server down</p>`;
             } else {
-                e("graph-tt").innerHTML = `<span>${date}</span> ${elem.dataset.count} Players`;
+                e("graph-tt").innerHTML = `<p><span>${date}</span> ${elem.dataset.count} Players</p>`;
             }
         } else {
-            e("graph-tt").innerHTML = `<span>Unknown</span> Data unavailable`;
+            e("graph-tt").innerHTML = "<p><span>Unknown</span> Data unavailable</p>";
         }
     });
 }
@@ -473,3 +473,48 @@ localStorage.removeItem("session");
 localStorage.removeItem("avatar");
 window.location.href = "https://valheimlist.org"
 }
+
+function setupIpCopy() {
+    const serverIps = document.querySelectorAll("header .server-ip");
+    for (let serverIp of serverIps) {
+        const serverIpContent = serverIp.querySelector(".server-ip-content");
+        const serverIpContentText = serverIpContent.innerText;
+        const serverIpText = serverIp.querySelector(".server-ip-text");
+
+        serverIp.addEventListener("click", function () {
+            serverIp.classList.add("clicked");
+            copyToClipboard(serverIpContentText);
+            serverIpText.innerText = "Copied!";
+            setTimeout(function () {
+                serverIp.classList.remove("clicked");
+            }, 500);
+            setTimeout(function () {
+                serverIpText.innerText = "Click to copy IP";
+            }, 1000);
+        });
+    }
+}
+
+function setupGraphHover() {
+    const headerGraphs = document.querySelectorAll("header .graph");
+    for (let graph of headerGraphs) {
+        const graphHolder = graph.querySelector(".graph-holder");
+        const graphTT = graph.querySelector(".graph-tt");
+        function addClassOnHover() {
+            graphTT.classList.add("visible");
+        }
+        function removeClassOnUnHover() {
+            graphTT.classList.remove("visible");
+        }
+        graphHolder.addEventListener("mouseenter", addClassOnHover);
+        graphHolder.addEventListener("mouseleave", removeClassOnUnHover);
+    }
+}
+
+(function main() {
+    setupIpCopy();
+    setupReviews(0);
+    showCommentsInput();
+    registerGraphEvents();
+    setupGraphHover();
+})();
