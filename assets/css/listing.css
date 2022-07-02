@@ -27,8 +27,9 @@ html {
 }
 
 .width-container {
-    width: 1000px;
-    margin:auto;
+    max-width: 1000px;
+    margin: auto;
+    padding: 0 1rem;
 }
 
 nav {
@@ -140,24 +141,27 @@ nav span {
     vertical-align: -5px!important;
 }
 
-header {
+/* ============================================================ */
+
+header.original {
+    display: none;
     margin-bottom: 50px;
 }
 
-.header-top {
+header.original .header-top {
     height: 181px;
     width: 100%;
     background: linear-gradient(#2f2f2f, #242424);
     position: relative;
 }
 
-.header-top div {
+header.original .header-top div {
     cursor: pointer;
     height: 60px;
     user-select: none;
 }
 
-.header-top div:nth-child(4) {
+header.original .header-top div:nth-child(4) {
     width: 180px;
     position: absolute;
     right: 100px;
@@ -174,12 +178,12 @@ header {
     letter-spacing: 1px;
 }
 
-.header-top div:nth-child(4):hover {
+header.original .header-top div:nth-child(4):hover {
     background: #4b4b4b;
     color: #fff;
 }
 
-.header-top div:nth-child(4) span {
+header.original .header-top div:nth-child(4) span {
     text-align: center;
     width: 165px;
     padding: 8px 10px;
@@ -196,7 +200,7 @@ header {
     text-overflow: ellipsis;
 }
 
-.header-top div:last-child {
+header.original .header-top div:last-child {
     width: 60px;
     position: absolute;
     right: 30px;
@@ -213,18 +217,18 @@ header {
     transition: 500ms;
 }
 
-.header-top div:last-child:hover {
+header.original .header-top div:last-child:hover {
     background: #5c73c2 linear-gradient(180deg, #8393cb, #5467a7) !important;
 }
 
-.header-top div:last-child span {
+header.original .header-top div:last-child span {
     width: 30px;
     height: 30px;
     display: block;
     margin: 5px auto 2px auto;
 }
 
-.header-bot {
+header.original .header-bot {
     margin-top: 3px;
     height: 90px;
     width: 100%;
@@ -233,7 +237,7 @@ header {
 
 }
 
-.header-top img {
+header.original .header-top img {
     height: 140px;
     width: 140px;
     padding: 2px;
@@ -245,18 +249,18 @@ header {
     left: 30px;
 }
 
-.h1 {
+header.original .h1 {
     position: absolute;
     top: 45px;
     left: 200px;
     display: inline-block;
 }
 
-.h1 h1 {
+header.original .h1 h1 {
     display: inline-block;
 }
 
-.h1 span {
+header.original .h1 span {
     text-transform: uppercase;
     color: rgba(255,255,255,.6);
     font-weight: 600;
@@ -270,12 +274,12 @@ header {
 
 }
 
-.verified {
+header.original .verified {
     color: rgb(77, 255, 0)!important;
     border: 1px solid rgb(77, 255, 0) !important;
 }
 
-.header-top p {
+header.original .header-top p {
     position: absolute;
     top: 95px;
     left: 200px;
@@ -283,6 +287,551 @@ header {
     width: 350px;
     line-height: 22px;
 }
+
+header.original .col {
+    display: inline-block;
+    width: 100px;
+    margin-right: 5px;
+    text-align: center;
+    margin-top: 22px;
+}
+
+header.original .col:first-child {
+    margin-left: 15px;
+}
+
+header.original .col span:nth-child(1) {
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 10px;
+    padding-bottom: 12px;
+    display: block;
+    letter-spacing: 2px;
+    color: #979797
+}
+
+header.original .col span:nth-child(2) {
+    display: block;
+    font-size: 18px;
+}
+
+header.original .graph {
+    background-color: #232323;
+    height: 100%;
+    width: 640px;
+    position: absolute;
+    right: 0;
+    top:0;
+    padding: 15px 30px 15px 55px;
+}
+
+header.original .graph-holder {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+}
+
+header.original .graph-holder div {
+    flex: 1;
+    height:100%;
+    position: relative;
+}
+
+header.original .graph-holder div:hover {
+    background-color: #474747;
+}
+
+header.original .graph-holder div div {
+    border-radius: 0;
+    height: 3%;
+    width: 2px;
+    margin: 15px auto;
+    background: linear-gradient(#00fed6, #00f6fd, #00fed6);
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+}
+
+header.original .empty {
+    background: #6d6d6d!important;
+}
+
+header.original .dead {
+    height: 3%!important;
+    background: rgba(255, 0, 0, 0.74) !important;
+}
+
+header.original #graph-name {
+    position: absolute;
+    top: 0;
+    text-align: center;
+    right: 30px;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 10px;
+    color: #808080;
+    margin-top: 10px;
+    z-index: 10;
+    text-shadow: 0 0 3px #232323;
+}
+
+header.original .graph-holder:hover ~ #graph-tt {
+    opacity: 1;
+}
+
+header.original #graph-tt {
+    transition: 100ms;
+    transition-timing-function: ease-in-out;
+    opacity: 0;
+    position: absolute;
+    bottom:-12px;
+    height: 25px;
+    border-radius: 5px;
+    left: 31px;
+    background: linear-gradient(#171717, #000000);
+    border:1px solid #3b3b3b;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 10px;
+    letter-spacing: 1px;
+    padding: 5px 5px;
+    color: #fff;
+}
+
+header.original #graph-tt span {
+    margin-right: 5px;
+    background-color: #232323;
+    border: 1px solid #4b4b4b;
+    padding: 0px 5px;
+    border-radius: 5px;
+}
+
+header.original .graph-controls {
+    position: absolute;
+    bottom:-12px;
+    height: 25px;
+    color: #acacac;
+    border-radius: 5px;
+    right: 30px;
+    background: linear-gradient(#282828, #151515);
+    border:1px solid #3b3b3b;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 10px;
+    letter-spacing: 1px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+header.original #daily-control {
+    cursor: not-allowed!important;
+}
+
+header.original .graph-controls div {
+ display: inline-block;
+    padding: 5px 10px;
+    border-right:1px solid #3b3b3b;
+}
+
+header.original .graph-controls div:last-child {
+    border: none;
+}
+
+header.original .graph-controls div:hover {
+    color: #e2e2e2;
+    background: linear-gradient(#171717, #000000);
+}
+
+header.original .graph-controls .active {
+    cursor: default;
+    color: #e2e2e2;
+    background: linear-gradient(#171717, #000000);
+}
+
+header.original #graph-max-count {
+    position: absolute;
+    top: 11px;
+    left: 25px;
+}
+
+header.original .num-count-display {
+    color: #808080;
+    font-weight: bold;
+    font-size: 10px;
+    width: 20px;
+    text-align: center;
+    padding: 3px 0;
+}
+
+header.original .hack-flair-encompassing {
+    height: 32px;
+    width: 6px;
+    border: 1px solid #4b4b4b;
+    border-right: 1px solid rgba(0,0,0,0);
+    margin-left: 7px;
+}
+
+/* ============================================================ */
+
+header.new {
+    margin-bottom: 50px;
+}
+
+header.new .header-top {
+    margin-bottom: 3px;
+    padding: 20px 30px;
+    background: linear-gradient(#2f2f2f, #242424);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    row-gap: 20px;
+    column-gap: 30px;
+}
+
+@media screen and (max-width: 576px) {
+    header.new .header-top {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
+header.new .header-top .server-logo {}
+
+@media screen and (max-width: 576px) {
+    header.new .header-top .server-logo {
+        align-self: center;
+    }
+}
+
+header.new .header-top .server-logo img {
+    height: 140px;
+    width: 140px;
+    padding: 2px;
+    background-color: #131313;
+    border: 2px solid #0dd2d7;
+    border-radius: 10px;
+}
+
+header.new .header-top .server-info {
+    flex: 1;
+    min-width: 180px;
+}
+
+header.new .header-top .server-info .server-name {
+    margin-bottom: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    row-gap: 5px;
+    column-gap: 12px;
+}
+
+header.new .header-top .server-info .server-name h1 {}
+
+header.new .header-top .server-info .server-name .server-icons {
+    display: flex;
+    column-gap: 10px;
+}
+
+header.new .header-top .server-info .server-name .server-icons span {
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 10px;
+    padding: 2px 4px 1px 4px;
+    border-radius: 5px;
+}
+
+header.new .header-top .server-info .server-name .server-icons span.server-location {
+    color: rgba(255,255,255,.6);
+    border: 1px solid rgba(255, 255, 255, 0.49);
+}
+header.new .header-top .server-info .server-name .server-icons span.server-verified {
+    color: rgb(77, 255, 0);
+    border: 1px solid rgb(77, 255, 0);
+}
+
+header.new .header-top .server-info p.server-summary {
+    color: #aaaaaa;
+    line-height: 22px;
+}
+
+header.new .header-top .server-connect {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 10px;
+    column-gap: 10px;
+}
+
+header.new .header-top .server-connect .server-ip {
+    cursor: pointer;
+    width: 180px;
+    height: 60px;
+    user-select: none;
+    border-radius: 10px;
+    background: #3e3e3e;
+    border: 1px solid transparent !important;
+    box-shadow: 0 5px 10px rgba(0,0,0,.1);
+    text-transform: uppercase;
+    font-size: 10px;
+    font-weight: 500;
+    text-align: center;
+    color: #a1a1a1;
+    letter-spacing: 1px;
+}
+
+header.new .header-top .server-connect .server-ip:hover {
+    background: #4b4b4b;
+    color: #fff;
+}
+
+header.new .header-top .server-connect .server-ip span {
+    text-align: center;
+    width: 165px;
+    padding: 8px 10px;
+    margin: 6px auto 3px auto;
+    border-radius: 10px;
+    color: #fff;
+    display: inline-block;
+    background-color: #2a2a2a;
+    text-transform: lowercase;
+    font-size: 11px;
+    font-family: "Courier New", monospace;
+    letter-spacing: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+header.new .header-top .server-connect .server-discord {
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
+    user-select: none;
+    border-radius: 10px;
+    background: #5c73c2 linear-gradient(180deg, #7287ce, #4a60aa) !important;
+    box-shadow: 0 5px 10px rgba(0,0,0,.1);
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 500;
+    text-align: center;
+    color: #e7e7e7;
+    letter-spacing: 1px;
+    transition: 500ms;
+}
+
+header.new .header-top .server-connect .server-discord:hover {
+    background: #5c73c2 linear-gradient(180deg, #8393cb, #5467a7) !important;
+}
+
+header.new .header-top .server-connect .server-discord span {
+    width: 30px;
+    height: 30px;
+    display: block;
+    margin: 5px auto 2px auto;
+}
+
+header.new .header-bot {
+    background-color: #2a2a2a;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 30px;
+}
+
+header.new .header-bot .metric {
+    text-align: center;
+    padding: 20px 0;
+}
+
+header.new .header-bot .metric:nth-child(1) {
+    padding-left: 30px;
+}
+
+header.new .header-bot .metric p.metric-name {
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 10px;
+    padding-bottom: 12px;
+    letter-spacing: 2px;
+    color: #979797
+}
+
+header.new .header-bot .metric p.metric-value {
+    font-size: 18px;
+}
+
+header.new .header-bot .graph {
+    flex: 1;
+    background-color: #232323;
+    /* width: 640px; */
+    /* padding: 15px 30px 15px 55px; */
+
+    /* TEMP */
+    text-align: center;
+    font-size: 3rem;
+    padding: 10px;
+}
+
+header.new .header-bot .graph-holder {
+    /* position: relative; */
+    /* width: 100%; */
+    /* height: 100%; */
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+}
+
+header.new .header-bot .graph-holder div {
+    flex: 1;
+    /* height: 100%; */
+    /* position: relative; */
+}
+
+header.new .header-bot .graph-holder div:hover {
+    background-color: #474747;
+}
+
+header.new .header-bot .graph-holder div div {
+    border-radius: 0;
+    /* height: 3%; */
+    width: 2px;
+    margin: 15px auto;
+    background: linear-gradient(#00fed6, #00f6fd, #00fed6);
+    /* position: absolute; */
+    /* left: 0; */
+    /* right: 0; */
+    /* bottom: 0; */
+    pointer-events: none;
+}
+
+header.new .header-bot .empty {
+    background: #6d6d6d!important;
+}
+
+header.new .header-bot .dead {
+    height: 3%!important;
+    background: rgba(255, 0, 0, 0.74) !important;
+}
+
+header.new .header-bot .graph-name {
+    /* position: absolute; */
+    /* top: 0; */
+    /* right: 30px; */
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 10px;
+    color: #808080;
+    /* margin-top: 10px; */
+    /* z-index: 10; */
+    text-shadow: 0 0 3px #232323;
+}
+
+header.new .header-bot .graph-holder:hover ~ #graph-tt {
+    opacity: 1;
+}
+
+header.new .header-bot #graph-tt {
+    transition: 100ms;
+    transition-timing-function: ease-in-out;
+    opacity: 0;
+    /* position: absolute; */
+    /* bottom:-12px; */
+    height: 25px;
+    width: 300px;
+    border-radius: 5px;
+    /* left: 31px; */
+    background: linear-gradient(#171717, #000000);
+    border: 1px solid #3b3b3b;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 10px;
+    letter-spacing: 1px;
+    padding: 5px 5px;
+    color: #fff;
+}
+
+header.new .header-bot #graph-tt span {
+    margin-right: 5px;
+    background-color: #232323;
+    border: 1px solid #4b4b4b;
+    padding: 0px 5px;
+    border-radius: 5px;
+}
+
+header.new .header-bot .graph-controls {
+    /* position: absolute; */
+    /* bottom:-12px; */
+    height: 25px;
+    width: 125px;
+    color: #acacac;
+    border-radius: 5px;
+    /* right: 30px; */
+    background: linear-gradient(#282828, #151515);
+    border:1px solid #3b3b3b;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 10px;
+    letter-spacing: 1px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+header.new .header-bot .daily-control {
+    cursor: not-allowed!important;
+}
+
+header.new .header-bot .graph-controls div {
+    display: inline-block;
+    padding: 5px 10px;
+    border-right:1px solid #3b3b3b;
+}
+
+header.new .header-bot .graph-controls div:last-child {
+    border: none;
+}
+
+header.new .header-bot .graph-controls div:hover {
+    color: #e2e2e2;
+    background: linear-gradient(#171717, #000000);
+}
+
+header.new .header-bot .graph-controls .active {
+    cursor: default;
+    color: #e2e2e2;
+    background: linear-gradient(#171717, #000000);
+}
+
+header.new .header-bot .graph-max-count {
+    /* position: absolute; */
+    /* top: 11px; */
+    /* left: 25px; */
+}
+
+header.new .header-bot .num-count-display {
+    color: #808080;
+    font-weight: bold;
+    font-size: 10px;
+    width: 20px;
+    text-align: center;
+    padding: 3px 0;
+}
+
+header.new .header-bot .hack-flair-encompassing {
+    height: 32px;
+    width: 6px;
+    border: 1px solid #4b4b4b;
+    border-right: 1px solid rgba(0,0,0,0);
+    margin-left: 7px;
+}
+
+/* ============================================================ */
 
 .tags {
     width: 100%;
@@ -310,195 +859,6 @@ header {
     border: 2px solid #878787;
     background-color: #3e3e3e;
     cursor: pointer;
-}
-
-.col {
-    display: inline-block;
-    width: 100px;
-    margin-right: 5px;
-    text-align: center;
-    margin-top: 22px;
-}
-
-.col:first-child {
-    margin-left: 15px;
-}
-
-.col span:nth-child(1) {
-    text-transform: uppercase;
-    font-weight: 600;
-    font-size: 10px;
-    padding-bottom: 12px;
-    display: block;
-    letter-spacing: 2px;
-    color: #979797
-}
-
-.col span:nth-child(2) {
-    display: block;
-    font-size: 18px;
-}
-
-.graph {
-    background-color: #232323;
-    height: 100%;
-    width: 640px;
-    position: absolute;
-    right: 0;
-    top:0;
-    padding: 15px 30px 15px 55px;
-}
-
-.graph-holder {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    justify-content: space-between;
-}
-
-.graph-holder div {
-    flex: 1;
-    height:100%;
-    position: relative;
-}
-
-.graph-holder div:hover {
-    background-color: #474747;
-}
-
-.graph-holder div div {
-    border-radius: 0;
-    height: 3%;
-    width: 2px;
-    margin: 15px auto;
-    background: linear-gradient(#00fed6, #00f6fd, #00fed6);
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    pointer-events: none;
-}
-
-.empty {
-    background: #6d6d6d!important;
-}
-
-.dead {
-    height: 3%!important;
-    background: rgba(255, 0, 0, 0.74) !important;
-}
-
-#graph-name {
-    position: absolute;
-    top: 0;
-    text-align: center;
-    right: 30px;
-    text-transform: uppercase;
-    font-weight: 500;
-    font-size: 10px;
-    color: #808080;
-    margin-top: 10px;
-    z-index: 10;
-    text-shadow: 0 0 3px #232323;
-}
-
-.graph-holder:hover ~ #graph-tt {
-    opacity: 1;
-}
-
-#graph-tt {
-    transition: 100ms;
-    transition-timing-function: ease-in-out;
-    opacity: 0;
-    position: absolute;
-    bottom:-12px;
-    height: 25px;
-    border-radius: 5px;
-    left: 31px;
-    background: linear-gradient(#171717, #000000);
-    border:1px solid #3b3b3b;
-    text-transform: uppercase;
-    font-weight: 500;
-    font-size: 10px;
-    letter-spacing: 1px;
-    padding: 5px 5px;
-    color: #fff;
-}
-
-#graph-tt span {
-    margin-right: 5px;
-    background-color: #232323;
-    border: 1px solid #4b4b4b;
-    padding: 0px 5px;
-    border-radius: 5px;
-}
-
-.graph-controls {
-    position: absolute;
-    bottom:-12px;
-    height: 25px;
-    color: #acacac;
-    border-radius: 5px;
-    right: 30px;
-    background: linear-gradient(#282828, #151515);
-    border:1px solid #3b3b3b;
-    text-transform: uppercase;
-    font-weight: 500;
-    font-size: 10px;
-    letter-spacing: 1px;
-    overflow: hidden;
-    cursor: pointer;
-}
-
-#daily-control {
-    cursor: not-allowed!important;
-}
-
-.graph-controls div {
- display: inline-block;
-    padding: 5px 10px;
-    border-right:1px solid #3b3b3b;
-}
-
-.graph-controls div:last-child {
-    border: none;
-}
-
-.graph-controls div:hover {
-    color: #e2e2e2;
-    background: linear-gradient(#171717, #000000);
-}
-
-.graph-controls .active {
-    cursor: default;
-    color: #e2e2e2;
-    background: linear-gradient(#171717, #000000);
-}
-
-#graph-max-count {
-    position: absolute;
-    top: 11px;
-    left: 25px;
-}
-
-.num-count-display {
-    color: #808080;
-    font-weight: bold;
-    font-size: 10px;
-    width: 20px;
-    text-align: center;
-    padding: 3px 0;
-}
-
-.hack-flair-encompassing {
-    height: 32px;
-    width: 6px;
-    border: 1px solid #4b4b4b;
-    border-right: 1px solid rgba(0,0,0,0);
-    margin-left: 7px;
 }
 
 section {
@@ -531,6 +891,7 @@ section {
 
 .content-container {
     display: flex;
+    flex-wrap: wrap;
 }
 
 .reviews {
@@ -545,6 +906,16 @@ section {
     left: calc(50% - 50px);
     position: relative;
     margin-bottom: 100px;
+}
+
+@media screen and (max-width: 1000px) {
+    .desc {
+        width: 100%;
+        border-right: 0;
+    }
+    .reviews {
+        width: 100%;
+    }
 }
 
 .leave-review {
@@ -839,37 +1210,29 @@ footer a:hover {
     color: #fff;
 }
 
-@media (max-width: 1050px) {
-    .width-container {
-        zoom: .8;
-        -moz-transform: scale(.8);
-        -moz-transform-origin: top center;
-    }
-}
-
 .image-modal {
-display: none;
-position: fixed;
-top:0;
-left:0;
-bottom:0;
-right:0;
-width: 100vw;
-height:100vh;
-background-color: rgba(0,0,0,.5);
-z-index:999;
+    display: none;
+    position: fixed;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    width: 100vw;
+    height:100vh;
+    background-color: rgba(0,0,0,.5);
+    z-index:999;
 }
 
 .image-modal img {
-max-width: calc(100vw - 100px);
-display: block;
-position: fixed;
-background-color: #000;
-top: 50%;
-left:50%;
+    max-width: calc(100vw - 100px);
+    display: block;
+    position: fixed;
+    background-color: #000;
+    top: 50%;
+    left:50%;
     transform: translate(-50%, -50%);
     padding: 5px;
     border: 4px solid #00f8f2;
     border-radius: 30px;
-max-height: calc(100vh - 100px);
+    max-height: calc(100vh - 100px);
 }
