@@ -315,6 +315,13 @@ header .header-bot {
     column-gap: 30px;
 }
 
+/* reduce gap for narrow screens */
+@media screen and (max-width: 320px) {
+    header .header-bot {
+        column-gap: 10px;
+    }
+}
+
 header .header-bot .metric {
     text-align: center;
     padding: 20px 0;
@@ -322,6 +329,13 @@ header .header-bot .metric {
 
 header .header-bot .metric:nth-child(1) {
     padding-left: 30px;
+}
+
+/* reduce padding for narrow screens */
+@media screen and (max-width: 320px) {
+    header .header-bot .metric:nth-child(1) {
+        padding-left: 10px;
+    }
 }
 
 header .header-bot .metric p.metric-name {
@@ -340,8 +354,14 @@ header .header-bot .metric p.metric-value {
 header .header-bot .graph {
     flex: 1;
     background-color: #232323;
-    /* width: 640px; */
     padding: 15px 30px 0px 30px;
+}
+
+/* reduce padding for narrow screens */
+@media screen and (max-width: 320px) {
+    header .header-bot .graph {
+        padding: 15px 15px 0px 15px;
+    }
 }
 
 header .header-bot .graph p.graph-name {
