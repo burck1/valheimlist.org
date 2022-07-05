@@ -1,3 +1,4 @@
+
 function e(e) {
     return document.getElementById(e);
 }
@@ -67,12 +68,12 @@ if (localStorage.getItem('test')) {
 function renderAccountData() {
     if (localStorage.getItem("session")) {
     let avatar_url
-        if(localStorage.getItem('avatar') == "") {
-        avatar_url = 'https://valheimlist.org/assets/img/nopic.png'
-        } else {
-        avatar_url = 'https://cdn.discordapp.com/avatars/'+localStorage.getItem('id')+'/'+ localStorage.getItem('avatar')+'.jpg'
-        }
-
+    	if(localStorage.getItem('avatar') == "") {
+    	avatar_url = 'https://valheimlist.org/assets/img/nopic.png'
+    	} else {
+    	avatar_url = 'https://cdn.discordapp.com/avatars/'+localStorage.getItem('id')+'/'+ localStorage.getItem('avatar')+'.jpg'
+    	}
+        
         e("disbtn").innerHTML = `<div class="flair"></div><img src="${avatar_url}"><div class="text-discord">${localStorage.getItem('username')}#${localStorage.getItem('discrim')}</div><div class="online-tick"></div>`
     }
 }
@@ -100,10 +101,7 @@ function trackScrollSidebar() {
 }
 
 function registerGraphEvents() {
-    const graphHolder = e("graph-holder");
-    const graphTT = e("graph-tt");
-
-    graphHolder.addEventListener("mousemove", function (val) {
+    e("graph-holder").addEventListener("mousemove", function (val) {
         var elem = document.elementFromPoint(val.clientX, val.clientY);
         //console.log(elem.dataset.count)
 
@@ -113,12 +111,12 @@ function registerGraphEvents() {
 
         if (!isNaN(elem.dataset.count)) {
             if (elem.dataset.count == -1) {
-               graphTT.innerHTML = `<p><span>${date}</span> Server down</p>`;
+                e("graph-tt").innerHTML = `<p><span>${date}</span> Server down</p>`;
             } else {
-               graphTT.innerHTML = `<p><span>${date}</span> ${elem.dataset.count} Players</p>`;
+                e("graph-tt").innerHTML = `<p><span>${date}</span> ${elem.dataset.count} Players</p>`;
             }
         } else {
-           graphTT.innerHTML = "<p><span>Unknown</span> Data unavailable</p>";
+            e("graph-tt").innerHTML = "<p><span>Unknown</span> Data unavailable</p>";
         }
     });
 }
@@ -189,7 +187,7 @@ function setupReviews(reviewPointer) {
     let nextTemplate = `<div id="pag-next" onclick="shiftReviews(true)">Next</div>`
     let dom = "";
 
-    // console.log(reviewPointer)
+    console.log(reviewPointer)
     if (!(reviewPointer -3 < 0)) {
         dom += backTemplate
     }
@@ -426,7 +424,7 @@ function search(input) {
                 item.getElementsByClassName("num-count-display")[0].insertAdjacentHTML("afterend","<div class=\"hack-flair-encompassing\"></div>")
 
 
-        console.log(response)
+		console.log(response)	
             let img = response.split(`f=auto&#x2F;img&#x2F;`)[1]
             img = img.split("\">")[0]
             let urlpart1 = img.split("&#x2F;")[0]
@@ -458,22 +456,22 @@ function search(input) {
 }
 
 function showImageModal(image) {
-    let modal = document.getElementsByClassName("image-modal")[0];
-    let img = modal.getElementsByTagName("img")[0];
-    if (image) {
-        modal.style.display = "block";
-        img.src = image;
-    } else {
-        modal.style.display = "none";
-        img.src = "";
-    }
+let modal = document.getElementsByClassName("image-modal")[0]
+let img = modal.getElementsByTagName("img")[0]
+if (image) {
+modal.style.display = "block";
+img.src = image;
+} else {
+modal.style.display = "none";
+img.src = "";
+}
 }
 
 function logout() {
-    localStorage.removeItem("username");
-    localStorage.removeItem("session");
-    localStorage.removeItem("avatar");
-    window.location.href = "https://valheimlist.org";
+localStorage.removeItem("username");
+localStorage.removeItem("session");
+localStorage.removeItem("avatar");
+window.location.href = "https://valheimlist.org"
 }
 
 function setupIpCopy() {
