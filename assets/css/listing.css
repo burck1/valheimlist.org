@@ -27,29 +27,36 @@ html {
 }
 
 .width-container {
-    max-width: 1000px;
-    margin: auto;
+    max-width: 1032px;
+    margin: 0 auto;
     padding: 0 1rem;
 }
 
 .width-container nav {
-    position: relative;
-    margin-bottom: 40px;
+    margin-top: 30px;
+    margin-bottom: 30px;
     text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    column-gap: 10px;
+    row-gap: 10px;
 }
 
-.width-container nav .logo-mast {
+.width-container nav a {
+    display: inline-block;
+    text-decoration: none;
+}
+
+.width-container nav a.logo-link {}
+
+.width-container nav a.logo-link img.logo-mast {
     height: 70px;
     width: 225px;
-    display: block;
-    margin: 30px auto 0px auto;
-    cursor:pointer
 }
 
-#see-all-servers {
-    position: absolute;
-    left: 0;
-    top: 16px;
+.width-container nav a.see-all-servers {
     letter-spacing: 1px;
     font-weight: 700;
     font-size: 13px;
@@ -57,14 +64,14 @@ html {
     padding: 9px 22px 9px 22px;
     border-radius: 5px;
     color: #dbdbdb;
-    cursor: pointer;
+    white-space: nowrap;
 }
 
-#see-all-servers:hover {
+.width-container nav a.see-all-servers:hover {
     background-color: #323232;
 }
 
-nav span {
+.width-container nav span.ico {
     display: inline-block;
     height: 20px;
     width: 20px;
@@ -73,7 +80,7 @@ nav span {
     background-repeat: no-repeat;
 }
 
-.discord-button {
+.width-container nav a.discord-button {
     background: #7289da linear-gradient(180deg, #7289da, #5369b6);
     border-radius: 200px;
     padding: 9px 0;
@@ -81,26 +88,34 @@ nav span {
     height: 41px;
     color: #fff;
     box-shadow: 0 5px 10px rgba(0,0,0,.5);
-    cursor: pointer;
     min-width: 145px;
     font-weight: 600;
-    position: absolute;
-    right: 0;
-    top:16px;
+    position: relative;
     white-space: nowrap;
     overflow: hidden;
 }
-.discord-button .flair {
+
+.width-container nav a.discord-button:hover {
+    background: #5c73c2 linear-gradient(180deg, #4a60aa, #667dcd);
+}
+
+.width-container nav a.discord-button span.ico-discord {
+    margin-left: 25px;
+    margin-top: 2px;
+    vertical-align: -5px;
+}
+
+.width-container nav a.discord-button .flair {
     background-color: rgba(0,0,0,.25);
     height: 100%;
     width: 47px;
+    position: absolute;
     left: 0;
     top: 0;
-    margin:0;
-    position: absolute;
+    margin: 0;
 }
 
-.discord-button img {
+.width-container nav a.discord-button img {
     width: 29px;
     height: 29px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -110,7 +125,7 @@ nav span {
     left: 10px;
 }
 
-.online-tick {
+.width-container nav a.discord-button .online-tick {
     border-radius: 50px;
     background: #4cff00;
     box-sizing: content-box;
@@ -120,10 +135,9 @@ nav span {
     top: 24px;
     left: -22px;
     box-shadow: 0 0 3px rgb(114, 255, 0);
-
 }
 
-.discord-button div {
+.width-container nav a.discord-button div {
     margin: 4px 10px 0 53px;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -131,15 +145,53 @@ nav span {
     text-transform: initial;
 }
 
-.discord-button:hover {
-    background: #5c73c2 linear-gradient(180deg, #4a60aa, #667dcd)!important;
+.width-container nav .break-for-mobile {
+    display: none;
 }
 
-.discord-button span {
-    margin-left: 25px;
-    margin-top:2px;
-    vertical-align: -5px!important;
+/*
+ * setup layout so the logo is at the top of the page and
+ * the buttons are side-by-side below the logo
+ */
+@media screen and (max-width: 768px) and (min-width: 576px) {
+    .width-container nav a.logo-link {
+        order: 1;
+        margin: 0 auto;
+    }
+    .width-container nav .break-for-mobile {
+        display: block;
+        order: 2;
+        flex-basis: 100%;
+        height: 0;
+    }
+    .width-container nav a.see-all-servers {
+        order: 3;
+    }
+    .width-container nav a.discord-button {
+        order: 4;
+    }
 }
+
+/*
+ * setup layout so the logo is at the top of the page and
+ * the buttons are on separate rows below the logo
+ */
+@media screen and (max-width: 575px) {
+    .width-container nav {
+        flex-direction: column;
+        row-gap: 30px;
+    }
+    .width-container nav a.logo-link {
+        order: 1;
+    }
+    .width-container nav a.see-all-servers {
+        order: 2;
+    }
+    .width-container nav a.discord-button {
+        order: 3;
+    }
+}
+
 
 header {
     margin-bottom: 50px;
@@ -156,7 +208,7 @@ header .header-top {
     column-gap: 30px;
 }
 
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 575px) {
     header .header-top {
         flex-direction: column;
         align-items: stretch;
@@ -165,7 +217,7 @@ header .header-top {
 
 header .header-top .server-logo {}
 
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 575px) {
     header .header-top .server-logo {
         align-self: center;
     }
