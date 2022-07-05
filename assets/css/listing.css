@@ -32,13 +32,13 @@ html {
     padding: 0 1rem;
 }
 
-nav {
+.width-container nav {
     position: relative;
     margin-bottom: 40px;
     text-transform: uppercase;
 }
 
-nav .logo-mast {
+.width-container nav .logo-mast {
     height: 70px;
     width: 225px;
     display: block;
@@ -560,6 +560,7 @@ section {
     line-height: 25px;
     padding: 10px 0;
     white-space: pre-wrap;
+    word-wrap: break-word;
 }
 
 .desc p:first-child {
@@ -837,49 +838,49 @@ section {
 
 footer {
     background-color: #101010;
-    height: 500px;
-
 }
 
-.footer-container {
-    max-width: 500px;
+footer .footer-container {
+    max-width: 550px;
     margin: auto;
-    padding: 70px 0;
+    padding: 30px;
+    display: flex;
+    flex-wrap: wrap-reverse;
+    row-gap: 30px;
+    column-gap: 30px;
+    justify-content: space-between;
 }
 
-footer img {
-    width: 225px;
-    height: auto;
+footer .footer-container .leftsidefooter {}
+
+footer .footer-container .leftsidefooter img {
+    max-width: 225px;
+    margin-bottom: 20px;
 }
 
-footer .leftsidefooter {
-    float: left;
-}
-
-footer .text {
+footer .footer-container .leftsidefooter .text {
     display: block;
     color: #8e8e8e;
-    padding: 30px 0;
-    width: 300px;
+    max-width: 300px;
     line-height: 25px;
 }
 
-footer nav {
-    float: right;
+footer .footer-container nav {
+    text-transform: uppercase;
 }
 
-footer h6 {
+footer .footer-container h6 {
     text-transform: uppercase;
     font-size: 14px;
     margin-bottom: 20px;
     color: #686868;
 }
 
-footer a {
+footer .footer-container a {
     color: #c1c1c1;
 }
 
-footer nav a {
+footer .footer-container nav a {
     display: block;
     color: #c1c1c1;
     font-weight: 600;
@@ -888,7 +889,7 @@ footer nav a {
     padding: 4px 0;
 }
 
-footer a:hover {
+footer .footer-container a:hover {
     color: #fff;
 }
 
